@@ -1,0 +1,4 @@
+node_modules
+.DS_Store
+.env
+theme-extension/assets/mix-manifest.json

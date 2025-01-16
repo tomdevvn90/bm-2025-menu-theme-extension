@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+$border-radius: 8px !default;
+$accent-color: #2196f3 !default;
+$border-color: #ddd !default;
+$border-radius: 6px !default;
+$menu_bg: #111D25;
+$accent_color: #004F59;
+$link_color_accent: #19242D;
+$font_size: 14px;
+
+body {
+  font-family: "Open Sans", sans-serif;
+
+  p, h1, h2, h3, h4, h5, h6, input, textarea, select, label, button, span {
+    font-family: "Open Sans", sans-serif !important;
+  }
+}
+
+@import './menu-builder/menu-design';
