@@ -42,12 +42,20 @@ body.__mega-shop-menu-open {
 
 ul.menu-builder {
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   align-items: center;
   margin: 0;
   padding: 0;
   font-size: $font_size;
   background: $menu_bg;
+  overflow-x: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   .menu-builder__sub {
     position: absolute;
@@ -81,6 +89,13 @@ ul.menu-builder {
             fill: $link_color_accent;
           }
         }
+
+        @media (max-width: 600px) {
+          padding: 12px;
+          font-size: 12px;
+          line-height: 125%;
+          letter-spacing: 0.12px;
+        }
       }
     }
 
@@ -88,8 +103,65 @@ ul.menu-builder {
       width: 100%;
       border-radius: 4px;
       background: #ECEEEE;
-      padding-right: 8px;
       max-width: 1420px;
+      margin-top: 4px;
+
+      > li.__menu-item {
+        &:first-child a {
+          border-radius: 4px 0 0 0;
+        }
+      }
+
+      @media (max-width: 1560px) {
+        max-width: 1320px;
+      }
+
+      @media (max-width: 1440px) {
+        max-width: 1260px;
+      }
+
+      @media (max-width: 1320px) {
+        max-width: 1220px;
+      }
+
+      @media (max-width: 1280px) {
+        max-width: 1120px;
+        .__type__MEGASHOP_SUBITEM__ .__container-item {
+          .menu-hl-col {
+            display: none;
+          }
+          .menu-list-col {
+            width: 100%;
+          }
+        }
+      }
+  
+      @media (max-width: 1200px) {
+        max-width: 1020px;
+      }
+  
+      @media (max-width: 1080px) {
+        max-width: 900px;
+      }
+
+      @media (max-width: 991px) {
+        max-width: 100%;
+        margin-top: 0;
+
+        > li.__menu-item {
+          &:first-child a {
+            border-radius: 0;
+          }
+        }
+
+        .__type__MEGASHOP_SUBITEM__ .__container-item {
+          border-radius: 0;
+        }
+      }
+
+      @media (max-width: 600px) {
+        height: 80vh;
+      }
 
       .__type__MEGASHOP_SUBITEM__ {
         background: transparent;
@@ -97,11 +169,23 @@ ul.menu-builder {
         .__container-item {
           box-shadow: none !important;
           border-radius: 0 4px 4px 0;
+
+          @media (max-width: 600px) {
+            border-radius: 0;
+          }
         }
       } 
 
       > li.__menu-item {
         width: 184px;
+
+        @media (max-width: 1200px) {
+          width: 150px;
+        }
+
+        @media (max-width: 600px) {
+          width: 120px;
+        }
 
         > a {
           color: #60676B;
@@ -115,6 +199,11 @@ ul.menu-builder {
           border-radius: 0;
           position: relative;
           z-index: 10;
+
+          @media (max-width: 600px) {
+            font-size: 12px;
+            padding: 12px 4px 12px 8px;
+          }
 
           .__menu-item-name {
             width: 100%;
@@ -165,8 +254,6 @@ ul.menu-builder {
   > li.__menu-item {
 
     &.__menu-item_type____MEGASHOP__>a {
-      // background: radial-gradient(50.71% 137.5% at 50% 0%, #2F3C45 0%, #252F36 100%);
-
       span.__menu-icon {
         display: flex;
 
@@ -193,6 +280,7 @@ ul.menu-builder {
       letter-spacing: 0.65px;
       text-transform: uppercase;
       min-height: 54px;
+      width: max-content;
     }
 
     &:hover,
@@ -202,6 +290,28 @@ ul.menu-builder {
       }
     }
     
+    @media (max-width: 991px) {
+      > a {
+        padding: 12px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      > a {
+        padding: 12px 8px;
+      }
+      &.__menu-item_type____MEGASHOP__ {
+        > a {
+          padding: 12px;
+        }
+      }
+    }
+    @media (max-width: 600px) {
+      > a {
+        font-size: 11px;
+        letter-spacing: 0.22px;
+      }
+    }
   }
 
   li.__menu-item {
@@ -232,6 +342,10 @@ ul.menu-builder {
           margin-left: 8px;
           margin-right: 0;
           line-height: 0;
+
+          @media (max-width: 767px) {
+            margin-left: 4px;
+          }
         }
       }
     }
@@ -240,6 +354,13 @@ ul.menu-builder {
 
 .menu-builder__sub {
   width: 184px;
+
+  @media (max-width: 1200px) {
+    width: 150px;
+  }
+  @media (max-width: 600px) {
+    width: 120px;
+  }
 }
 
 ul.__type__MEGASHOP_SUBITEM__ {
@@ -261,6 +382,29 @@ ul.__type__MEGASHOP_SUBITEM__ {
     background: #ECEEEE;
     box-shadow: 0px 8px 24px 0px rgba(17, 17, 27, 0.10), 0px 16px 56px 0px rgba(17, 17, 27, 0.10), 0px 24px 80px 0px rgba(17, 17, 27, 0.10);
     z-index: -1;
+  }
+
+  @media (max-width: 1200px) {
+    left: 150px;
+    width: calc(100% - 150px);
+
+    &::after {
+      width: calc(100% + 150px);
+      left: -150px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    left: 120px;
+    width: calc(100% - 120px);
+    height: 80vh;
+    overflow-y: auto;
+
+    &::after {
+      width: calc(100% + 120px);
+      left: -120px;
+      border-radius: 0;
+    }
   }
 
   .menu-builder__sub {
@@ -372,9 +516,39 @@ li.__menu-item_type____MEGA__ {
     left: 50%!important;
     transform: translate(-50%);
     background: transparent;
+    padding-top: 4px;
   
     .menu-builder__sub {
       position: relative !important;
+    }
+
+    @media (max-width: 1560px) {
+      max-width: 1320px;
+    }
+
+    @media (max-width: 1440px) {
+      max-width: 1220px;
+    }
+
+    @media (max-width: 1360px) {
+      max-width: 1120px;
+    }
+
+    @media (max-width: 1200px) {
+      max-width: 1020px;
+    }
+
+    @media (max-width: 1080px) {
+      max-width: 950px;
+    }
+
+    @media (max-width: 991px) {
+      padding-top: 0;
+      max-width: 100%;
+
+      .__container-item {
+        border-radius: 0;
+      }
     }
   }
 }
@@ -388,6 +562,24 @@ ul.__type__BLOCK_BRAND__ {
 
   &.sub-lv__2 {
     padding: 6px 6px 0 !important;
+  }
+
+  @media (max-width: 1440px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @media (max-width: 991px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(3, 1fr);
+
+    &.sub-lv__2 {
+      padding: 6px 0 0 !important;
+    }
   }
 }
 
@@ -417,6 +609,14 @@ li.__menu-item_type____BLOCK_BRAND_ITEM__ {
   display: flex;
   flex-wrap: wrap;
   padding: 6px 8px 10px;
+
+  @media (max-width: 767px) {
+    padding: 6px 16px 16px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 6px 12px 16px;
+  }
 }
 
 ul.menu-builder .menu-builder__sub li.__menu-item_type____BLOCK_MENU_IMAGE__ {
@@ -444,6 +644,17 @@ ul.menu-builder .menu-builder__sub li.__menu-item_type____BLOCK_MENU_IMAGE__ {
     border-bottom: 2px solid #00515B;
     background: #FFF;
     padding: 4px 0 !important;
+
+    @media (max-width: 1080px) {
+      font-size: 13px;
+    }
+    @media (max-width: 600px) {
+      padding: 0 !important;
+      line-height: 125%;
+      letter-spacing: 0.13px;
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
   }
 
   .__menu-item_type____BLOCK_MENU_IMAGE_ITEM__ {
@@ -498,6 +709,24 @@ ul.menu-builder .menu-builder__sub li.__menu-item_type____BLOCK_MENU_IMAGE__ {
     }
   }
 
+  @media (max-width: 767px) {
+    &.__width-25, &.__width-50, &.__width-75, &.__width-100 {
+      width: 100%;
+      padding: 0 0 12px;
+
+      .__menu-item_type____BLOCK_MENU_IMAGE_ITEM__ {
+        width: 100%;
+        padding: 0 !important;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .__menu-item_type____BLOCK_MENU_IMAGE_ITEM__ {
+      margin-top: 2px;
+    }
+  }
+
 }
 
 ul.menu-builder .menu-builder__sub ul.__type__BLOCK_MENU_IMAGE__ {
@@ -533,6 +762,21 @@ ul.menu-builder .menu-builder__sub li.__menu-item_type____BLOCK_MENU_IMAGE_ITEM_
         max-height: 48px;
       }
     }
+
+    @media (max-width: 600px) {
+      min-height: 48px;
+      font-size: 12px;
+      line-height: 150%;
+      letter-spacing: 0.12px;
+          padding: 2px 4px 2px 8px !important;
+
+      .__image {
+        img {
+          max-width: 44px;
+          max-height: 44px;
+        }
+      }
+    }
   }
 
   // &.__is-hover,
@@ -561,12 +805,28 @@ ul.__type__MEGA__, .__type__MEGASHOP_SUBITEM__ {
       &.full {
         width: 100%;
       }
+
+      @media (max-width: 1360px) {
+        width: calc(100% - 240px);
+      }
+
+      @media (max-width: 991px) {
+        width: 100%;
+      }
     }
 
     .menu-hl-col {
       width: 280px;
       background: #ECEEEE;
       padding: 16px 20px 24px;
+
+      @media (max-width: 1360px) {
+        width: 240px;
+      }
+
+      @media (max-width: 991px) {
+        display: none;
+      }
 
       .hl-item {
         margin-top: 24px;

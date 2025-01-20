@@ -67,45 +67,6 @@
     }
   });
 
-  
-  {% comment %} const addMenuClickHandle = () => {
-    const $menuWrapper = document.querySelector('#__BM_2025_MENU__');
-    setInterval(() => {
-      let $innerDiv = $menuWrapper.querySelector('.menu-builder-container');
-      
-      if(!$innerDiv) return;
-      if($innerDiv.classList.contains('__addMenuClickHandle')) return;
-
-      let btnToggleMegaShopMenu = document.querySelector('li.__menu-item_type____MEGASHOP__ > a');
-      if(!btnToggleMegaShopMenu) return;
-      btnToggleMegaShopMenu.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.body.classList.toggle('__mega-shop-menu-open');
-      }); 
-
-      let ulMegaShopMenu = document.querySelector('ul.__type__MEGASHOP__');
-      let ulSubMegaShopMenu = document.querySelector('ul.__type__MEGASHOP_SUBITEM__');
-      document.documentElement.style.cssText = '--sub-megashop-height: ' + ulMegaShopMenu.offsetHeight + 'px';
-
-      {% comment %} 
-      let btnToggleMobiMenu = document.querySelector('.menu-builder-mobi__open');
-      btnToggleMobiMenu.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.body.classList.toggle('__mobi-menu-open');
-      });
-      let btnCloseMobiMenu = document.querySelector('.menu-builder-mobi__close');
-      btnCloseMobiMenu.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.body.classList.remove('__mobi-menu-open');
-      }); {% endcomment %}
-
-      $innerDiv.classList.add('__addMenuClickHandle')
-    }, 100);
-  }
-
-  document.addEventListener("DOMContentLoaded", function(event){
-    addMenuClickHandle();
-  }); {% endcomment %}
 </script>
 
 <script>
