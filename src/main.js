@@ -8,7 +8,7 @@ const ENDPOINT = process.env.MIX_ENDPOINT;
 ((w) => {
   'use strict';
 
-  const BmMenuInit = () => {
+  const Bm2025MenuInit = () => {
     const ROOT_ELEM = document.querySelector('#__BM_2025_MENU__');
     if(!ROOT_ELEM) return;
 
@@ -17,7 +17,7 @@ const ENDPOINT = process.env.MIX_ENDPOINT;
     root.render(
       <BmMenuContextProvider 
         API_ENDPOINT={ ENDPOINT } 
-        API_KEY={ API_KEY } 
+        API_KEY={ API_KEY }
         menuId={ menuId }
         storeId={ storeId } >
           <BmMenuApp />
@@ -25,7 +25,7 @@ const ENDPOINT = process.env.MIX_ENDPOINT;
   }
 
   document.addEventListener('DOMContentLoaded', e => {
-    BmMenuInit();
+    Bm2025MenuInit();
   });
 
 })(window)

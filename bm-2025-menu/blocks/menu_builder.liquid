@@ -8,35 +8,35 @@
           var target = e.target;
 
           // Click Shop Sub Items (not open)
-          if (target.matches('li.__has-children.__menu-item_type____MEGASHOP_SUBITEM__:not(.__mega-menu-open) > a, li.__has-children.__menu-item_type____MEGASHOP_SUBITEM__:not(.__mega-menu-open) > a span')) {
+          if (target.matches('li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__:not(.__mega-menu-open) > a, li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__:not(.__mega-menu-open) > a span, li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__:not(.__mega-menu-open) > a span svg')) {
             e.preventDefault();
-            document.querySelectorAll('li.__has-children.__menu-item_type____MEGA__, li.__has-children.__menu-item_type____MEGASHOP_SUBITEM__')
+            document.querySelectorAll('li.__has-children-menu.__bm-menu-item_type____MEGA__, li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__')
               .forEach(function (item) {
                   item.classList.remove('__mega-menu-open');
               });
-            target.closest('li.__has-children.__menu-item_type____MEGASHOP_SUBITEM__').classList.add('__mega-menu-open');
+            target.closest('li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__').classList.add('__mega-menu-open');
             return;
           }
 
           {% comment %} 
           // Click Shop Sub Items (open)
-          if (target.matches('li.__has-children.__menu-item_type____MEGASHOP_SUBITEM__.__mega-menu-open > a, li.__has-children.__menu-item_type____MEGASHOP_SUBITEM__.__mega-menu-open > a span')) {
+          if (target.matches('li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__.__mega-menu-open > a, li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__.__mega-menu-open > a span, li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__.__mega-menu-open > a span svg')) {
             e.preventDefault();
-            target.closest('li.__has-children.__menu-item_type____MEGASHOP_SUBITEM__').classList.remove('__mega-menu-open');
+            target.closest('li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__').classList.remove('__mega-menu-open');
             return;
           } 
           {% endcomment %}
 
           // Click Mega Shop Item
-          if (target.matches('li.__menu-item_type____MEGASHOP__ > a, li.__menu-item_type____MEGASHOP__ > a span')) {
+          if (target.matches('li.__bm-menu-item_type____MEGASHOP__ > a, li.__bm-menu-item_type____MEGASHOP__ > a span, li.__bm-menu-item_type____MEGASHOP__ > a span svg')) {
             e.preventDefault();
-            document.querySelectorAll('li.__has-children.__menu-item_type____MEGA__, li.__has-children.__menu-item_type____MEGASHOP_SUBITEM__')
+            document.querySelectorAll('li.__has-children-menu.__bm-menu-item_type____MEGA__, li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__')
               .forEach(function (item) {
                 item.classList.remove('__mega-menu-open');
               });
             document.body.classList.toggle('__mega-shop-menu-open');
             if (document.body.classList.contains('__mega-shop-menu-open')) {
-              var firstChild = document.querySelector('li.__menu-item_type____MEGASHOP__ .__type__MEGASHOP__').firstElementChild;
+              var firstChild = document.querySelector('li.__bm-menu-item_type____MEGASHOP__ .__type__MEGASHOP__').firstElementChild;
               if (firstChild) {
                 firstChild.classList.add('__mega-menu-open');
               }
@@ -45,21 +45,21 @@
           }
 
           // Click Mega Item (not open)
-          if (target.matches('li.__has-children.__menu-item_type____MEGA__:not(.__mega-menu-open) > a, li.__has-children.__menu-item_type____MEGA__:not(.__mega-menu-open) > a span')) {
+          if (target.matches('li.__has-children-menu.__bm-menu-item_type____MEGA__:not(.__mega-menu-open) > a, li.__has-children-menu.__bm-menu-item_type____MEGA__:not(.__mega-menu-open) > a span, li.__has-children-menu.__bm-menu-item_type____MEGA__:not(.__mega-menu-open) > a span svg')) {
             e.preventDefault();
             document.body.classList.remove('__mega-shop-menu-open');
-            document.querySelectorAll('li.__has-children.__menu-item_type____MEGA__, li.__has-children.__menu-item_type____MEGASHOP_SUBITEM__')
+            document.querySelectorAll('li.__has-children-menu.__bm-menu-item_type____MEGA__, li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__')
               .forEach(function (item) {
                   item.classList.remove('__mega-menu-open');
               });
-            target.closest('li.__has-children.__menu-item_type____MEGA__').classList.add('__mega-menu-open');
+            target.closest('li.__has-children-menu.__bm-menu-item_type____MEGA__').classList.add('__mega-menu-open');
             return;
           }
 
           // Click Mega Item (open)
-          if (target.matches('li.__has-children.__menu-item_type____MEGA__.__mega-menu-open > a, li.__has-children.__menu-item_type____MEGA__.__mega-menu-open > a span')) {
+          if (target.matches('li.__has-children-menu.__bm-menu-item_type____MEGA__.__mega-menu-open > a, li.__has-children-menu.__bm-menu-item_type____MEGA__.__mega-menu-open > a span, li.__has-children-menu.__bm-menu-item_type____MEGA__.__mega-menu-open > a span svg')) {
             e.preventDefault();
-            target.closest('li.__has-children.__menu-item_type____MEGA__').classList.remove('__mega-menu-open');
+            target.closest('li.__has-children-menu.__bm-menu-item_type____MEGA__').classList.remove('__mega-menu-open');
             return;
           }
         });
@@ -73,7 +73,7 @@
 {{ block.settings.custom_js_script }}
 </script>
 
-<section class="__menu-builder-container">
+<section class="__bm-2025-menu-container">
   <div class="bm-2025-menu" id="__BM_2025_MENU__" data-store-id="{{ shop.id }}" data-menu-id="{{ block.settings.menu_id }}" >
     {{ block.settings.prerender_html }} 
   </div>
@@ -83,8 +83,8 @@
 {
   "name": "BM Menu Block", 
   "target": "section",
-  "javascript": "menu-builder.bundle.js", 
-  "stylesheet": "menu-builder.bundle.css", 
+  "javascript": "bm-2025-menu.bundle.js", 
+  "stylesheet": "bm-2025-menu.bundle.css", 
   "settings": [ 
     {
       "type": "text", 

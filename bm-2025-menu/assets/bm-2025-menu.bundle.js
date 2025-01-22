@@ -28,7 +28,7 @@ function BmMenuApp() {
     var lv = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
     var __parent_item = arguments.length > 2 ? arguments[2] : undefined;
     lv = lv === null ? 0 : lv += 1;
-    var classesUl = lv == 0 ? ['menu-builder'] : ['menu-builder__sub', "sub-lv__".concat(lv), __parent_item !== null && __parent_item !== void 0 && __parent_item.type ? "__type".concat(__parent_item.type) : ''];
+    var classesUl = lv == 0 ? ['bm-2025-menu-main'] : ['bm-2025-menu__sub', "sub-level__".concat(lv), __parent_item !== null && __parent_item !== void 0 && __parent_item.type ? "__type".concat(__parent_item.type) : ''];
     var __li = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
       children: menu.map(function (item, __i_index) {
         var _item$config;
@@ -39,17 +39,11 @@ function BmMenuApp() {
           type = item.type;
         var columns = item !== null && item !== void 0 && (_item$config = item.config) !== null && _item$config !== void 0 && _item$config.containerColumns ? item.config.containerColumns : 0;
         var columnsClasses = columns ? "__width-".concat(columns * 25) : '';
-        var liClasses = ['__menu-item', "__item-lv-".concat(lv), columnsClasses, children && children.length > 0 ? "__has-children" : '', item.type ? "__menu-item_type__".concat(type) : ''];
+        var liClasses = ['__bm-menu-item', "__item-lv-".concat(lv), columnsClasses, children && children.length > 0 ? "__has-children-menu" : '', item.type ? "__bm-menu-item_type__".concat(type) : ''];
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
           className: liClasses.join(' '),
           "data-id": __key,
-          "data-nav-level": lv
-          // data-nav-item={ ((__u, __name) => {
-          //   let segment = __u.split('/');
-          //   let newName = __name.split(' ').join('-').toLowerCase();
-          //   return segment.at(-1) == '' ? newName : segment.at(-1);
-          // })(url, name) } 
-          ,
+          "data-nav-level": lv,
           children: [['__BLOCK_BRAND__'].includes(type) == false && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("a", {
             href: url,
             style: {
@@ -60,7 +54,7 @@ function BmMenuApp() {
             children: [['__MEGASHOP__'].includes(type) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_MenuIcon__WEBPACK_IMPORTED_MODULE_1__["default"], {
               source: 'HB'
             }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
-              className: "__menu-item-name",
+              className: "__bm-menu-item-name",
               children: [name, children && children.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_MenuIcon__WEBPACK_IMPORTED_MODULE_1__["default"], {
                 className: 'dropdown-icon',
                 source: 'arrow_down'
@@ -89,7 +83,7 @@ function BmMenuApp() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: __parent_item !== null && __parent_item !== void 0 && (_parent_item$config = __parent_item.config) !== null && _parent_item$config !== void 0 && _parent_item$config.highlight_enable ? 'menu-list-col' : 'menu-list-col full',
           children: [(__parent_item === null || __parent_item === void 0 || (_parent_item$config2 = __parent_item.config) === null || _parent_item$config2 === void 0 ? void 0 : _parent_item$config2.more_text) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "__menu-item",
+            className: "__bm-menu-item",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
               href: __parent_item === null || __parent_item === void 0 || (_parent_item$config3 = __parent_item.config) === null || _parent_item$config3 === void 0 ? void 0 : _parent_item$config3.more_url,
               children: __parent_item.config.more_text
@@ -134,7 +128,7 @@ function MenuIcon(_ref) {
   var source = _ref.source,
     className = _ref.className;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-    className: ['__menu-icon', className].join(' '),
+    className: ['__bm-menu-icon', className].join(' '),
     dangerouslySetInnerHTML: {
       __html: __ICONS[source]
     }
@@ -405,7 +399,7 @@ var ENDPOINT = "https://buildmat-app-api.fly.dev/api";
 (function (w) {
   'use strict';
 
-  var BmMenuInit = function BmMenuInit() {
+  var Bm2025MenuInit = function Bm2025MenuInit() {
     var ROOT_ELEM = document.querySelector('#__BM_2025_MENU__');
     if (!ROOT_ELEM) return;
     var _ROOT_ELEM$dataset = ROOT_ELEM.dataset,
@@ -421,7 +415,7 @@ var ENDPOINT = "https://buildmat-app-api.fly.dev/api";
     }));
   };
   document.addEventListener('DOMContentLoaded', function (e) {
-    BmMenuInit();
+    Bm2025MenuInit();
   });
 })(window);
 
@@ -35272,8 +35266,8 @@ if (false) {} else {
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/menu-builder.bundle": 0,
-/******/ 			"menu-builder.bundle": 0
+/******/ 			"/bm-2025-menu.bundle": 0,
+/******/ 			"bm-2025-menu.bundle": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -35323,8 +35317,8 @@ if (false) {} else {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["menu-builder.bundle"], () => (__webpack_require__("./src/main.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["menu-builder.bundle"], () => (__webpack_require__("./src/scss/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["bm-2025-menu.bundle"], () => (__webpack_require__("./src/main.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["bm-2025-menu.bundle"], () => (__webpack_require__("./src/scss/app.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

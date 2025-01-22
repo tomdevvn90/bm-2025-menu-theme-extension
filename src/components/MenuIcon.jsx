@@ -5,5 +5,5 @@ const __ICONS = {
 }
 
 export default function MenuIcon ({ source, className }) {
-  return <span className={ ['__menu-icon', className].join(' ') } dangerouslySetInnerHTML={{__html: __ICONS[source]}}></span>
+  return <span className={ ['__bm-menu-icon', className].join(' ') } dangerouslySetInnerHTML={{__html: __ICONS[source]}}></span>
 }
