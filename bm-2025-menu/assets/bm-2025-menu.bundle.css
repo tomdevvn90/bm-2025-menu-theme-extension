@@ -28,18 +28,18 @@ ul.bm-2025-menu-main > li.__bm-menu-item.__bm-menu-item_type____MEGASHOP__ > a .
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
-body.__mega-shop-menu-open .__bm-menu-item_type____MEGASHOP__ > a {
+body.__bm-2025-menu-mega-shop-open .__bm-menu-item_type____MEGASHOP__ > a {
   background: radial-gradient(50.71% 137.5% at 50% 0%, #2F3C45 0%, #252F36 100%);
 }
-body.__mega-shop-menu-open ul.bm-2025-menu-main .bm-2025-menu__sub.__type__MEGASHOP__ {
+body.__bm-2025-menu-mega-shop-open ul.bm-2025-menu-main .bm-2025-menu__sub.__type__MEGASHOP__ {
   visibility: visible;
   opacity: 1;
   z-index: 9;
 }
-body.__mega-shop-menu-open ul.bm-2025-menu-main > li.__bm-menu-item.__bm-menu-item_type____MEGASHOP__ > a .__bm-menu-icon svg {
+body.__bm-2025-menu-mega-shop-open ul.bm-2025-menu-main > li.__bm-menu-item.__bm-menu-item_type____MEGASHOP__ > a .__bm-menu-icon svg {
   opacity: 0;
 }
-body.__mega-shop-menu-open ul.bm-2025-menu-main > li.__bm-menu-item.__bm-menu-item_type____MEGASHOP__ > a .__bm-menu-icon:before, body.__mega-shop-menu-open ul.bm-2025-menu-main > li.__bm-menu-item.__bm-menu-item_type____MEGASHOP__ > a .__bm-menu-icon:after {
+body.__bm-2025-menu-mega-shop-open ul.bm-2025-menu-main > li.__bm-menu-item.__bm-menu-item_type____MEGASHOP__ > a .__bm-menu-icon:before, body.__bm-2025-menu-mega-shop-open ul.bm-2025-menu-main > li.__bm-menu-item.__bm-menu-item_type____MEGASHOP__ > a .__bm-menu-icon:after {
   opacity: 1;
 }
 

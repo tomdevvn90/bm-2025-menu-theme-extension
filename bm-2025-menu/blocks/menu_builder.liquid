@@ -1,7 +1,17 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    var menuMegaClick = document.querySelectorAll('.bm-2025-menu');
+    // Get mega menu height
+    const topbarSection = document.getElementById('shopify-section-toolbar');
+    const topbarHeight = topbarSection ? topbarSection.offsetHeight : 0;
+    const headerMain = document.getElementsByClassName('header-main__brand');
+    const headerHeight = headerMain[0] ? headerMain[0].offsetHeight : 0;
+    const w_vh = window.innerHeight;
+    const bmMegaHeight = w_vh - (topbarHeight + headerHeight + 54);
+    document.documentElement.style.setProperty('--bm-topbar-vh', `${topbarHeight}px`);
+    document.documentElement.style.setProperty('--bm-header-main-vh', `${headerHeight}px`);
+    document.documentElement.style.setProperty('--bm-mega-menu-vh', `${bmMegaHeight}px`);
 
+    var menuMegaClick = document.querySelectorAll('.bm-2025-menu');
     if (menuMegaClick.length > 0) {
       menuMegaClick.forEach(function (menu) {
         menu.addEventListener('click', function (e) { 
@@ -18,15 +28,6 @@
             return;
           }
 
-          {% comment %} 
-          // Click Shop Sub Items (open)
-          if (target.matches('li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__.__mega-menu-open > a, li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__.__mega-menu-open > a span, li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__.__mega-menu-open > a span svg')) {
-            e.preventDefault();
-            target.closest('li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__').classList.remove('__mega-menu-open');
-            return;
-          } 
-          {% endcomment %}
-
           // Click Mega Shop Item
           if (target.matches('li.__bm-menu-item_type____MEGASHOP__ > a, li.__bm-menu-item_type____MEGASHOP__ > a span, li.__bm-menu-item_type____MEGASHOP__ > a span svg')) {
             e.preventDefault();
@@ -34,8 +35,9 @@
               .forEach(function (item) {
                 item.classList.remove('__mega-menu-open');
               });
-            document.body.classList.toggle('__mega-shop-menu-open');
-            if (document.body.classList.contains('__mega-shop-menu-open')) {
+            document.body.classList.remove('__bm-2025-menu-mega-normal-open');
+            document.body.classList.toggle('__bm-2025-menu-mega-shop-open');
+            if (document.body.classList.contains('__bm-2025-menu-mega-shop-open')) {
               var firstChild = document.querySelector('li.__bm-menu-item_type____MEGASHOP__ .__type__MEGASHOP__').firstElementChild;
               if (firstChild) {
                 firstChild.classList.add('__mega-menu-open');
@@ -47,7 +49,8 @@
           // Click Mega Item (not open)
           if (target.matches('li.__has-children-menu.__bm-menu-item_type____MEGA__:not(.__mega-menu-open) > a, li.__has-children-menu.__bm-menu-item_type____MEGA__:not(.__mega-menu-open) > a span, li.__has-children-menu.__bm-menu-item_type____MEGA__:not(.__mega-menu-open) > a span svg')) {
             e.preventDefault();
-            document.body.classList.remove('__mega-shop-menu-open');
+            document.body.classList.remove('__bm-2025-menu-mega-shop-open');
+            document.body.classList.add('__bm-2025-menu-mega-normal-open');
             document.querySelectorAll('li.__has-children-menu.__bm-menu-item_type____MEGA__, li.__has-children-menu.__bm-menu-item_type____MEGASHOP_SUBITEM__')
               .forEach(function (item) {
                   item.classList.remove('__mega-menu-open');
@@ -59,6 +62,7 @@
           // Click Mega Item (open)
           if (target.matches('li.__has-children-menu.__bm-menu-item_type____MEGA__.__mega-menu-open > a, li.__has-children-menu.__bm-menu-item_type____MEGA__.__mega-menu-open > a span, li.__has-children-menu.__bm-menu-item_type____MEGA__.__mega-menu-open > a span svg')) {
             e.preventDefault();
+            document.body.classList.remove('__bm-2025-menu-mega-normal-open');
             target.closest('li.__has-children-menu.__bm-menu-item_type____MEGA__').classList.remove('__mega-menu-open');
             return;
           }
