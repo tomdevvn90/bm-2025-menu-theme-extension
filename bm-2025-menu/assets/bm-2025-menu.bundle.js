@@ -99,10 +99,18 @@ function BmMenuApp() {
     });
     return __ul;
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    className: "bm-2025-menu-wrap",
-    children: menuData && menuData.length > 0 && renderMenu(menuData)
-  });
+  if (menuData && menuData.length > 0) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "bm-2025-menu-wrap",
+      children: renderMenu(menuData)
+    });
+  } else {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      dangerouslySetInnerHTML: {
+        __html: window.bm_2025_menu_pre_html
+      }
+    });
+  }
 }
 
 /***/ }),
@@ -402,6 +410,7 @@ var ENDPOINT = "https://buildmat-app-api.fly.dev/api";
   var Bm2025MenuInit = function Bm2025MenuInit() {
     var ROOT_ELEM = document.querySelector('#__BM_2025_MENU__');
     if (!ROOT_ELEM) return;
+    window.bm_2025_menu_pre_html = ROOT_ELEM.innerHTML;
     var _ROOT_ELEM$dataset = ROOT_ELEM.dataset,
       storeId = _ROOT_ELEM$dataset.storeId,
       menuId = _ROOT_ELEM$dataset.menuId;

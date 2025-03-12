@@ -12,6 +12,8 @@ const ENDPOINT = process.env.MIX_ENDPOINT;
     const ROOT_ELEM = document.querySelector('#__BM_2025_MENU__');
     if(!ROOT_ELEM) return;
 
+    window.bm_2025_menu_pre_html = ROOT_ELEM.innerHTML;
+
     const { storeId, menuId } = ROOT_ELEM.dataset;
     const root = createRoot(ROOT_ELEM);
     root.render(

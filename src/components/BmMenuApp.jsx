@@ -89,8 +89,9 @@ export default function BmMenuApp() {
     return __ul;
   }
 
-  return <div className="bm-2025-menu-wrap">
-    {/* { JSON.stringify(menuData) } */} 
-    { (menuData && menuData.length > 0) && renderMenu(menuData) }
-  </div>
+  if (menuData && menuData.length > 0) {
+    return <div className="bm-2025-menu-wrap">{ renderMenu(menuData) }</div>
+  } else {
+    return <div dangerouslySetInnerHTML={{ __html: window.bm_2025_menu_pre_html }} />
+  }
 }
