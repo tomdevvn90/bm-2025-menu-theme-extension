@@ -35,7 +35,7 @@ export default function BmMenuApp() {
               data-nav-level={ lv }
               >
               { ['__BLOCK_BRAND__'].includes(type) == false && 
-                <a href={ url } style={{ background: item.background, color: item.color }}
+                <a href={ url } data-nav-level={ lv } style={{ background: item.background, color: item.color }}
                   className={ ['__BLOCK_MENU_IMAGE__', '__BLOCK_MENU_IMAGE_HEADING__'].includes(type) ? 'menu-heading' : '' } >
                   { ['__MEGASHOP__'].includes(type) ? <MenuIcon source={ 'HB' } /> : '' } 
                   <span className="__bm-menu-item-name">

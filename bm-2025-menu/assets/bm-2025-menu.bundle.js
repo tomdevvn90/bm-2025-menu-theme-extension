@@ -46,6 +46,7 @@ function BmMenuApp() {
           "data-nav-level": lv,
           children: [['__BLOCK_BRAND__'].includes(type) == false && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("a", {
             href: url,
+            "data-nav-level": lv,
             style: {
               background: item.background,
               color: item.color
@@ -403,7 +404,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var API_KEY = "API-ceab35274bec67420ab7f572d7288daa81a4e455";
-var ENDPOINT = "https://buildmat-app-api.fly.dev/api";
+var ENDPOINT = "https://buildmat-app-api-au.fly.dev/api";
 (function (w) {
   'use strict';
 
