@@ -699,7 +699,7 @@ ul.__type__MEGA__ .__container-item .menu-hl-col, .__type__MEGASHOP_SUBITEM__ ._
 ul.__type__MEGA__ .__container-item .menu-hl-col .hl-item, .__type__MEGASHOP_SUBITEM__ .__container-item .menu-hl-col .hl-item {
   margin-top: 24px;
 }
-ul.__type__MEGA__ .__container-item .menu-hl-col h3, .__type__MEGASHOP_SUBITEM__ .__container-item .menu-hl-col h3 {
+ul.__type__MEGA__ .__container-item .menu-hl-col .hl-title, .__type__MEGASHOP_SUBITEM__ .__container-item .menu-hl-col .hl-title {
   color: #00363C;
   font-size: 20px;
   font-weight: 600;
@@ -711,7 +711,7 @@ ul.__type__MEGA__ .__container-item .menu-hl-col h3, .__type__MEGASHOP_SUBITEM__
 ul.__type__MEGA__ .__container-item .menu-hl-col img, .__type__MEGASHOP_SUBITEM__ .__container-item .menu-hl-col img {
   max-width: 100%;
 }
-ul.__type__MEGA__ .__container-item .menu-hl-col h4, .__type__MEGASHOP_SUBITEM__ .__container-item .menu-hl-col h4 {
+ul.__type__MEGA__ .__container-item .menu-hl-col .hl-subtitle, .__type__MEGASHOP_SUBITEM__ .__container-item .menu-hl-col .hl-subtitle {
   color: #333;
   font-size: 14px;
   font-weight: 600;
