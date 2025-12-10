@@ -524,7 +524,8 @@ ul.bm-2025-menu-main .bm-2025-menu__sub li.__bm-menu-item_type____BLOCK_MENU_IMA
   border-bottom: 2px solid rgba(0, 79, 89, 0.2117647059);
   padding: 16px 0 !important;
 }
-ul.bm-2025-menu-main .bm-2025-menu__sub li.__bm-menu-item_type____BLOCK_MENU_IMAGE__ a.menu-heading {
+ul.bm-2025-menu-main .bm-2025-menu__sub li.__bm-menu-item_type____BLOCK_MENU_IMAGE__ a.menu-heading,
+ul.bm-2025-menu-main .bm-2025-menu__sub li.__bm-menu-item_type____BLOCK_MENU_IMAGE__ span.menu-heading {
   color: #00515B !important;
   font-family: "Open Sans";
   font-size: 14px;
@@ -536,14 +537,17 @@ ul.bm-2025-menu-main .bm-2025-menu__sub li.__bm-menu-item_type____BLOCK_MENU_IMA
   border-bottom: 2px solid #00515B;
   background: #FFF;
   padding: 4px 0 !important;
+  display: block;
 }
 @media (max-width: 1080px) {
-  ul.bm-2025-menu-main .bm-2025-menu__sub li.__bm-menu-item_type____BLOCK_MENU_IMAGE__ a.menu-heading {
+  ul.bm-2025-menu-main .bm-2025-menu__sub li.__bm-menu-item_type____BLOCK_MENU_IMAGE__ a.menu-heading,
+  ul.bm-2025-menu-main .bm-2025-menu__sub li.__bm-menu-item_type____BLOCK_MENU_IMAGE__ span.menu-heading {
     font-size: 13px;
   }
 }
 @media (max-width: 600px) {
-  ul.bm-2025-menu-main .bm-2025-menu__sub li.__bm-menu-item_type____BLOCK_MENU_IMAGE__ a.menu-heading {
+  ul.bm-2025-menu-main .bm-2025-menu__sub li.__bm-menu-item_type____BLOCK_MENU_IMAGE__ a.menu-heading,
+  ul.bm-2025-menu-main .bm-2025-menu__sub li.__bm-menu-item_type____BLOCK_MENU_IMAGE__ span.menu-heading {
     padding: 0 !important;
     line-height: 125%;
     letter-spacing: 0.13px;

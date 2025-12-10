@@ -13,7 +13,11 @@ export default function Highlight({ parent_item }) {
             <div className='ft-brands-imgs'>
               {
                 parent_item.config.highlight_brands.map((item, index) => {
-                  return <a href={item.url} className='ft-img' key={index}><img src={item.url_img} alt='' /></a>
+                  if ( item.url && item.url.trim() !== '' ) {
+                    return <a href={item.url} className='ft-img' key={index}><img src={item.url_img} alt='' /></a>
+                  } else {
+                    return <div className='ft-img' key={index}><img src={item.url_img} alt='' /></div>
+                  }
                 })
               }
             </div>

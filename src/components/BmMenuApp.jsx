@@ -34,28 +34,51 @@ export default function BmMenuApp() {
               data-id={ __key }
               data-nav-level={ lv }
               >
-              { ['__BLOCK_BRAND__'].includes(type) == false && 
-                <a href={ url } data-nav-level={ lv } style={{ background: item.background, color: item.color }}
-                  className={ ['__BLOCK_MENU_IMAGE__', '__BLOCK_MENU_IMAGE_HEADING__'].includes(type) ? 'menu-heading' : '' } >
-                  { ['__MEGASHOP__'].includes(type) ? <MenuIcon source={ 'HB' } /> : '' } 
-                  <span className="__bm-menu-item-name">
-                    { name }
-                    { children && children.length > 0 ? <MenuIcon className={ 'dropdown-icon' } source={ 'arrow_down' } /> : '' } 
+              { ['__BLOCK_BRAND__'].includes(type) == false && ( 
+                url && url.trim() !== '' ? (
+                  <a href={ url } data-nav-level={ lv } style={{ background: item.background, color: item.color }}
+                    className={ ['__BLOCK_MENU_IMAGE__', '__BLOCK_MENU_IMAGE_HEADING__'].includes(type) ? 'menu-heading' : '' } >
+                    { ['__MEGASHOP__'].includes(type) ? <MenuIcon source={ 'HB' } /> : '' } 
+                    <span className="__bm-menu-item-name">
+                      { name }
+                      { children && children.length > 0 ? <MenuIcon className={ 'dropdown-icon' } source={ 'arrow_down' } /> : '' } 
+                    </span>
+                    { 
+                      ['__BLOCK_BRAND_ITEM__', '__BLOCK_MENU_IMAGE_ITEM__'].includes(type) && item?.image &&
+                      <div className={ ((__type) => {
+                        let __c = {
+                          '__BLOCK_BRAND_ITEM__': '__brand-image',
+                          '__BLOCK_MENU_IMAGE_ITEM__': '__image',
+                        }
+                        return __c[__type];
+                      })(type) }>
+                        <img src={ item.image } alt='' />
+                      </div>
+                    }
+                  </a>
+                ) : (
+                  <span data-nav-level={ lv } style={{ background: item.background, color: item.color }}
+                    className={ ['__BLOCK_MENU_IMAGE__', '__BLOCK_MENU_IMAGE_HEADING__'].includes(type) ? 'menu-heading' : '' } >
+                    { ['__MEGASHOP__'].includes(type) ? <MenuIcon source={ 'HB' } /> : '' } 
+                    <span className="__bm-menu-item-name">
+                      { name }
+                      { children && children.length > 0 ? <MenuIcon className={ 'dropdown-icon' } source={ 'arrow_down' } /> : '' } 
+                    </span>
+                    { 
+                      ['__BLOCK_BRAND_ITEM__', '__BLOCK_MENU_IMAGE_ITEM__'].includes(type) && item?.image &&
+                      <div className={ ((__type) => {
+                        let __c = {
+                          '__BLOCK_BRAND_ITEM__': '__brand-image',
+                          '__BLOCK_MENU_IMAGE_ITEM__': '__image',
+                        }
+                        return __c[__type];
+                      })(type) }>
+                        <img src={ item.image } alt='' />
+                      </div>
+                    }
                   </span>
-                  { 
-                    ['__BLOCK_BRAND_ITEM__', '__BLOCK_MENU_IMAGE_ITEM__'].includes(type) && item?.image &&
-                    <div className={ ((__type) => {
-                      let __c = {
-                        '__BLOCK_BRAND_ITEM__': '__brand-image',
-                        '__BLOCK_MENU_IMAGE_ITEM__': '__image',
-                      }
-                      return __c[__type];
-                    })(type) }>
-                      <img src={ item.image } alt='' />
-                    </div>
-                  }
-                </a>
-              }
+                )
+              ) }
               { (children && children.length > 0) && renderMenu(children, lv, item) }
             </li>
           })

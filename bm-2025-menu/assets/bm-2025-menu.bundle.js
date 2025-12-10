@@ -44,7 +44,7 @@ function BmMenuApp() {
           className: liClasses.join(' '),
           "data-id": __key,
           "data-nav-level": lv,
-          children: [['__BLOCK_BRAND__'].includes(type) == false && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("a", {
+          children: [['__BLOCK_BRAND__'].includes(type) == false && (url && url.trim() !== '' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("a", {
             href: url,
             "data-nav-level": lv,
             style: {
@@ -73,7 +73,35 @@ function BmMenuApp() {
                 alt: ""
               })
             })]
-          }), children && children.length > 0 && renderMenu(children, lv, item)]
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+            "data-nav-level": lv,
+            style: {
+              background: item.background,
+              color: item.color
+            },
+            className: ['__BLOCK_MENU_IMAGE__', '__BLOCK_MENU_IMAGE_HEADING__'].includes(type) ? 'menu-heading' : '',
+            children: [['__MEGASHOP__'].includes(type) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_MenuIcon__WEBPACK_IMPORTED_MODULE_1__["default"], {
+              source: 'HB'
+            }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+              className: "__bm-menu-item-name",
+              children: [name, children && children.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_MenuIcon__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                className: 'dropdown-icon',
+                source: 'arrow_down'
+              }) : '']
+            }), ['__BLOCK_BRAND_ITEM__', '__BLOCK_MENU_IMAGE_ITEM__'].includes(type) && (item === null || item === void 0 ? void 0 : item.image) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              className: function (__type) {
+                var __c = {
+                  '__BLOCK_BRAND_ITEM__': '__brand-image',
+                  '__BLOCK_MENU_IMAGE_ITEM__': '__image'
+                };
+                return __c[__type];
+              }(type),
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+                src: item.image,
+                alt: ""
+              })
+            })]
+          })), children && children.length > 0 && renderMenu(children, lv, item)]
         }, __key);
       })
     });
@@ -177,14 +205,24 @@ function Highlight(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: "ft-brands-imgs",
         children: parent_item.config.highlight_brands.map(function (item, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-            href: item.url,
-            className: "ft-img",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-              src: item.url_img,
-              alt: ""
-            })
-          }, index);
+          if (item.url && item.url.trim() !== '') {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+              href: item.url,
+              className: "ft-img",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                src: item.url_img,
+                alt: ""
+              })
+            }, index);
+          } else {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              className: "ft-img",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                src: item.url_img,
+                alt: ""
+              })
+            }, index);
+          }
         })
       })]
     }), parent_item.config.highlight_guides && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
