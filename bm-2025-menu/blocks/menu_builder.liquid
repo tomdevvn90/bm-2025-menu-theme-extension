@@ -79,7 +79,7 @@
 
 <section class="__bm-2025-menu-container">
   <div class="bm-2025-menu" id="__BM_2025_MENU__" data-store-id="{{ shop.id }}" data-menu-id="{{ block.settings.menu_id }}" >
-    {{ block.settings.prerender_html }} 
+    {% render 'bm-mega-menu' %}
   </div>
 </section>
 
@@ -87,7 +87,7 @@
 {
   "name": "BM Menu Block", 
   "target": "section",
-  "javascript": "bm-2025-menu.bundle.js", 
+  "javascript": "bm-2025-menu.bundle.js",
   "stylesheet": "bm-2025-menu.bundle.css", 
   "settings": [ 
     {
@@ -95,11 +95,6 @@
       "id": "menu_id",
       "label": "Menu ID",
       "default": "6785dd5184cda285d00b5f60"
-    }, 
-    {
-      "type": "html", 
-      "id": "prerender_html",
-      "label": "Pre-render HTML"
     },
     {
       "type": "html", 

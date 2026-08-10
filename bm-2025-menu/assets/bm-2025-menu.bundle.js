@@ -70,7 +70,7 @@ function BmMenuApp() {
               }(type),
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
                 src: item.image,
-                alt: ""
+                alt: item.imageAlt || name || ''
               })
             })]
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
@@ -98,7 +98,7 @@ function BmMenuApp() {
               }(type),
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
                 src: item.image,
-                alt: ""
+                alt: item.imageAlt || name || ''
               })
             })]
           })), children && children.length > 0 && renderMenu(children, lv, item)]

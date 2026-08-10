@@ -52,7 +52,7 @@ export default function BmMenuApp() {
                         }
                         return __c[__type];
                       })(type) }>
-                        <img src={ item.image } alt='' />
+                        <img src={ item.image } alt={ item.imageAlt || name || '' } />
                       </div>
                     }
                   </a>
@@ -73,7 +73,7 @@ export default function BmMenuApp() {
                         }
                         return __c[__type];
                       })(type) }>
-                        <img src={ item.image } alt='' />
+                        <img src={ item.image } alt={ item.imageAlt || name || '' } />
                       </div>
                     }
                   </span>

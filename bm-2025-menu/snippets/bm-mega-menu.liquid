@@ -1,0 +1,96 @@
+{% comment %}
+  File: snippets/bm-mega-menu.liquid
+  Fully Shopify-safe version
+{% endcomment %}
+{% assign menu_data = shop.metafields.custom.bm_mega_menu.value %}
+{% if menu_data != blank 
+  and menu_data.builder_data != blank 
+  and menu_data.builder_data.size > 0 %}
+<div class="bm-2025-menu-wrap preload">
+  <ul class="bm-2025-menu-main">
+  {% for top_item in menu_data.builder_data %}
+    {% assign item_name = top_item.name | default: 'Unnamed' %}
+    {% assign item_url  = top_item.url  | default: '#' %}
+    {% assign item_type = top_item.type | default: '__MEGA__' %}
+    {% assign has_children = false %}
+    {% if top_item.children != blank and top_item.children.size > 0 %}
+      {% assign has_children = true %}
+    {% endif %}
+    {% assign classes = '__bm-menu-item __item-lv-0' %}
+    {% if has_children %}
+      {% assign classes = classes | append: ' __has-children-menu' %}
+    {% endif %}
+    {% assign classes = classes | append: ' __bm-menu-item_type__' %}
+    {% assign classes = classes | append: item_type %}
+
+    <li class="{{ classes }}"
+        data-id="{{ top_item.__key | default: '' }}"
+        data-nav-level="0">
+      <a href="{{ item_url }}" data-nav-level="0">
+        <span class="__bm-menu-item-name">
+          {% if item_type == '__MEGASHOP__' %}
+            <span class="__bm-menu-icon">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.88 0H0.12C0.054 0 0 0.0613636 0 0.136364V1.22727C0 1.30227 0.054 1.36364 0.12 1.36364H11.88C11.946 1.36364 12 1.30227 12 1.22727V0.136364C12 0.0613636 11.946 0 11.88 0ZM11.88 10.6364H0.12C0.054 10.6364 0 10.6977 0 10.7727V11.8636C0 11.9386 0.054 12 0.12 12H11.88C11.946 12 12 11.9386 12 11.8636V10.7727C12 10.6977 11.946 10.6364 11.88 10.6364ZM11.88 5.31818H0.12C0.054 5.31818 0 5.37955 0 5.45455V6.54545C0 6.62045 0.054 6.68182 0.12 6.68182H11.88C11.946 6.68182 12 6.62045 12 6.54545V5.45455C12 5.37955 11.946 5.31818 11.88 5.31818Z"
+                      fill="white"/>
+              </svg>
+            </span>
+          {% endif %}
+          {{ item_name }}
+          {% if has_children and item_type != '__MEGASHOP__' %}
+            <span class="__bm-menu-icon dropdown-icon">
+              <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                <path d="M1 2.5L6 7.5L11 2.5"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"/>
+              </svg>
+            </span>
+          {% endif %}
+        </span>
+      </a>
+      {% if has_children %}
+      <ul class="bm-2025-menu__sub sub-level__1 __type__{{ item_type | replace: ' ', '_' }}">
+        {% if item_type == '__MEGASHOP__' %}
+          {% for level1 in top_item.children %}
+            {% assign l1_name = level1.name | default: 'No name' %}
+            {% assign l1_url  = level1.url  | default: '#' %}
+            {% assign l1_type = level1.type | default: '__MEGASHOP_SUBITEM__' %}
+
+            {% assign l1_has_children = false %}
+            {% if level1.children != blank and level1.children.size > 0 %}
+              {% assign l1_has_children = true %}
+            {% endif %}
+
+            {% assign l1_classes = '__bm-menu-item __item-lv-1' %}
+            {% if l1_has_children %}
+              {% assign l1_classes = l1_classes | append: ' __has-children-menu' %}
+            {% endif %}
+            {% assign l1_classes = l1_classes | append: ' __bm-menu-item_type____' %}
+            {% assign l1_classes = l1_classes | append: l1_type %}
+            <li class="{{ l1_classes }}"
+                data-id="{{ level1.__key | default: '' }}"
+                data-nav-level="1">
+              <a href="{{ l1_url }}" data-nav-level="1">
+                <span class="__bm-menu-item-name">
+                  {{ l1_name }}
+                </span>
+              </a>
+              {% if l1_has_children %}
+              <ul class="bm-2025-menu__sub sub-level__2 __type__{{ l1_type | replace: ' ', '_' }}">
+                {% render 'bm-mega-panel', config: level1.config, blocks: level1.children, title: l1_name %}
+              </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        {% else %}
+          {% render 'bm-mega-panel', config: top_item.config, blocks: top_item.children, title: item_name %}
+        {% endif %}
+      </ul>
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+{% endif %}

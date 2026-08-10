@@ -1,0 +1,122 @@
+{% comment %}
+  File: snippets/bm-mega-panel.liquid
+  Renders the "__container-item" mega panel (block gallery + highlight column).
+  Params: config (more_text/more_url/highlight_* object), blocks (array), title (string, used for highlight column)
+{% endcomment %}
+<div class="__container-item">
+  <div class="menu-list-col">
+    {% if config.more_text != blank %}
+      <div class="__bm-menu-item">
+        <a href="{{ config.more_url | default: '#' }}">
+          {{ config.more_text }}
+        </a>
+      </div>
+    {% endif %}
+    <div class="__BLOCK_MENU_IMAGE-container">
+      {% for block in blocks %}
+        {% if block.type == '__BLOCK_MENU_IMAGE__' %}
+          {% assign width_class = '__width-25' %}
+          <li class="__bm-menu-item __item-lv-2 {{ width_class }} __has-children-menu __bm-menu-item_type____BLOCK_MENU_IMAGE__"
+              data-id="{{ block.__key | default: '' }}"
+              data-nav-level="2">
+            <span class="menu-heading">
+              <span class="__bm-menu-item-name">
+                {{ block.name }}
+              </span>
+              <span class="__bm-menu-icon dropdown-icon">
+                <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                  <path d="M1 2.5L6 7.5L11 2.5"
+                        stroke="white"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </span>
+            {% if block.children != blank and block.children.size > 0 %}
+              <ul class="bm-2025-menu__sub sub-level__3">
+                {% for subitem in block.children %}
+                  {% if subitem.type == '__BLOCK_MENU_IMAGE_ITEM__' %}
+                    <li class="__bm-menu-item __item-lv-3 __bm-menu-item_type____BLOCK_MENU_IMAGE_ITEM__"
+                        data-id="{{ subitem.__key | default: '' }}"
+                        data-nav-level="3">
+                      <a href="{{ subitem.url | default: '#' }}">
+                        {% if subitem.image != blank %}
+                          <div class="__image">
+                            <img src="{{ subitem.image }}" alt="{{ subitem.imageAlt | default: subitem.name | escape }}" loading="lazy">
+                          </div>
+                        {% endif %}
+                        {{ subitem.name }}
+                      </a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% elsif block.type == '__BLOCK_BRAND__' %}
+          <ul class="bm-2025-menu__sub sub-level__2 __type__BLOCK_BRAND__">
+            {% for branditem in block.children %}
+              {% if branditem.type == '__BLOCK_BRAND_ITEM__' %}
+                <li class="__bm-menu-item __bm-menu-item_type____BLOCK_BRAND_ITEM__"
+                    data-id="{{ branditem.__key | default: '' }}">
+                  <a href="{{ branditem.url | default: '#' }}">
+                    {% if branditem.image != blank %}
+                      <div class="__brand-image">
+                        <img src="{{ branditem.image }}" alt="{{ branditem.imageAlt | escape }}" loading="lazy">
+                      </div>
+                    {% endif %}
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% if config.highlight_enable %}
+    <div class="menu-hl-col">
+      {% if title != blank %}
+        <div class="hl-title">
+          {{ title }}
+        </div>
+      {% endif %}
+      {% if config.highlight_image != blank %}
+        <img
+          src="{{ config.highlight_image }}"
+          alt="{{ title | escape }}"
+          loading="lazy" width="" height="">
+      {% endif %}
+
+      {% if config.highlight_brands != blank %}
+      <div class="hl-item">
+        <div class="hl-subtitle">
+          FEATURED BRANDS
+        </div>
+        <div class="ft-brands-imgs">
+          {% for brand in config.highlight_brands %}
+            <a href="{{ brand.url | default: '#' }}" class="ft-img">
+              <img
+                src="{{ brand.url_img }}"
+                alt="Brand"
+                loading="lazy" width="" height="">
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% if config.highlight_guides != blank %}
+      <div class="hl-item">
+        <div class="hl-subtitle">
+          Buying guides
+        </div>
+        <div>
+          {{ config.highlight_guides }}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
