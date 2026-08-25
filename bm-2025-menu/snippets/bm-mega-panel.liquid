@@ -43,7 +43,7 @@
                       <a href="{{ subitem.url | default: '#' }}">
                         {% if subitem.image != blank %}
                           <div class="__image">
-                            <img src="{{ subitem.image }}" alt="{{ subitem.imageAlt | default: subitem.name | escape }}" loading="lazy">
+                            <img data-src="{{ subitem.image }}" alt="{{ subitem.imageAlt | default: subitem.name | escape }}" loading="lazy" width="" height="">
                           </div>
                         {% endif %}
                         {{ subitem.name }}
@@ -63,7 +63,7 @@
                   <a href="{{ branditem.url | default: '#' }}">
                     {% if branditem.image != blank %}
                       <div class="__brand-image">
-                        <img src="{{ branditem.image }}" alt="{{ branditem.imageAlt | escape }}" loading="lazy">
+                        <img data-src="{{ branditem.image }}" alt="{{ branditem.imageAlt | escape }}" loading="lazy" width="" height="">
                       </div>
                     {% endif %}
                   </a>
@@ -84,7 +84,7 @@
       {% endif %}
       {% if config.highlight_image != blank %}
         <img
-          src="{{ config.highlight_image }}"
+          data-src="{{ config.highlight_image }}"
           alt="{{ title | escape }}"
           loading="lazy" width="" height="">
       {% endif %}
@@ -98,7 +98,7 @@
           {% for brand in config.highlight_brands %}
             <a href="{{ brand.url | default: '#' }}" class="ft-img">
               <img
-                src="{{ brand.url_img }}"
+                data-src="{{ brand.url_img }}"
                 alt="Brand"
                 loading="lazy" width="" height="">
             </a>
@@ -108,12 +108,18 @@
       {% endif %}
 
       {% if config.highlight_guides != blank %}
+      {% assign highlight_guides_html = config.highlight_guides
+        | replace: ' src="', ' data-src="'
+        | replace: " src='", " data-src='"
+        | replace: '<img src="', '<img data-src="'
+        | replace: "<img src='", "<img data-src='"
+      %}
       <div class="hl-item">
         <div class="hl-subtitle">
           Buying guides
         </div>
         <div>
-          {{ config.highlight_guides }}
+          {{ highlight_guides_html }}
         </div>
       </div>
       {% endif %}
