@@ -2,8 +2,11 @@
   File: snippets/bm-mega-panel.liquid
   Renders the "__container-item" mega panel (block gallery + highlight column).
   Params: config (more_text/more_url/highlight_* object), blocks (array), title (string, used for highlight column)
+
+  Preload-only markup (SEO / first paint before React). Inline display:none keeps
+  panel images out of the viewport so browsers and lazy-loaders do not fetch them.
 {% endcomment %}
-<div class="__container-item">
+<div class="__container-item" style="display: none;">
   <div class="menu-list-col">
     {% if config.more_text != blank %}
       <div class="__bm-menu-item">
